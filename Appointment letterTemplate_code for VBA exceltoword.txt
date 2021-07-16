@@ -1,0 +1,44 @@
+
+
+Sub exportexcelintoword()
+
+Dim WD As Word.Application
+Set WD = New Word.Application
+WD.Visible = True
+WD.Activate
+
+
+Dim DOC As Word.Document
+Dim i As Long
+
+
+Dim SH As Worksheet
+Set SH = ThisWorkbook.Sheets("SHEET2")
+
+Dim RNG As Range
+Set RNG = SH.Range("A1:A22")
+
+
+For i = 1 To 2
+    Set DOC = WD.Documents.Add
+   
+    STORE = Sheets("SHEET1").Cells(i, 2).Value
+    SH.Range("A6").Value = STORE
+   
+    STORE = Sheets("SHEET1").Cells(i, 3).Value
+    SH.Range("A10").Value = STORE
+    
+    STORE = Sheets("SHEET1").Cells(i, 4).Value
+    SH.Range("A9").Value = STORE
+    
+    STORE = Sheets("SHEET1").Cells(i, 1).Value
+    SH.Range("A8").Value = STORE
+    
+    RNG.Copy
+    WD.Selection.Paste
+    DOC.SaveAs2 ("D:\" & STORE & ".docx")
+    DOC.Close True
+Next i
+    
+    
+End Sub
