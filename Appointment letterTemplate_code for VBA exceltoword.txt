@@ -16,23 +16,25 @@ Dim SH As Worksheet
 Set SH = ThisWorkbook.Sheets("SHEET2")
 
 Dim RNG As Range
-Set RNG = SH.Range("A1:A22")
+Set RNG = SH.Range("A1:A18")
 
 
-For i = 1 To 2
+For i = 1 To 8
     Set DOC = WD.Documents.Add
    
     STORE = Sheets("SHEET1").Cells(i, 2).Value
-    SH.Range("A6").Value = STORE
+    SH.Range("A2").Value = STORE
    
     STORE = Sheets("SHEET1").Cells(i, 3).Value
-    SH.Range("A10").Value = STORE
-    
+    SH.Range("A6").Value = STORE
     STORE = Sheets("SHEET1").Cells(i, 4).Value
-    SH.Range("A9").Value = STORE
+    SH.Range("A7").Value = STORE
+    
+    STORE = Sheets("SHEET1").Cells(i, 5).Value
+    SH.Range("A5").Value = STORE
     
     STORE = Sheets("SHEET1").Cells(i, 1).Value
-    SH.Range("A8").Value = STORE
+    SH.Range("A4").Value = STORE
     
     RNG.Copy
     WD.Selection.Paste
